@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EFL - El Futuro Llegó | Portal ISEF 11</title>
+    <meta name="description" content="Portal informativo de la Escuela de Perfeccionamiento e Investigación (EPI) del ISEF N°11. Noticias, carreras, beneficios y agenda para estudiantes.">
+    <meta name="keywords" content="ISEF 11, EPI, El Futuro Llegó, EFL, noticias estudiantiles, Rosario, educación física">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="logo-efl.png">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4a7894;
+            --primary-light: #5a8aa4;
+            --accent: #f6b33c;
+            --bg-warm: #f9f9f9;
+            --bg-white: #ffffff;
+            --text-dark: #1a1a1a;
+            --text-medium: #4a4a4a;
+            --text-light: #7a7a7a;
+            --border: #e0e0e0;
+            --shadow: rgba(74, 120, 148, 0.12);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Source Sans 3', sans-serif;
+            background: var(--bg-warm);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Header Institucional */
+        .institutional-header {
+            background: var(--primary);
+            color: white;
+            padding: 0.75rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 8px var(--shadow);
+        }
+
+        .institutional-header .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+
+        .logo img {
+            height: 45px;
+            width: auto;
+        }
+
+        .efemeride-alert {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            backdrop-filter: blur(10px);
+            animation: slideInRight 0.5s ease-out;
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Navigation Menu */
+        nav {
+            background: var(--bg-white);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 58px;
+            z-index: 999;
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-item {
+            padding: 1rem 0;
+            cursor: pointer;
+            font-weight: 500;
+            color: var(--text-dark);
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .nav-item:hover {
+            color: var(--primary);
+        }
+
+        .nav-item.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--accent);
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 4rem 1.5rem 3rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .hero-logo {
+            max-width: 600px;
+            width: 90%;
+            height: auto;
+            margin-bottom: 1.5rem;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+
+        /* Section Titles */
+        .section {
+            padding: 3rem 0;
+        }
+
+        .section-title {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 2rem;
+            color: var(--primary);
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+        }
+
+        /* News Cards */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .news-card {
+            background: var(--bg-white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px var(--shadow);
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: slideUp 0.6s ease-out backwards;
+        }
+
+        .news-card:nth-child(1) { animation-delay: 0.1s; }
+        .news-card:nth-child(2) { animation-delay: 0.2s; }
+        .news-card:nth-child(3) { animation-delay: 0.3s; }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(26, 77, 46, 0.15);
+        }
+
+        .news-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .news-content {
+            padding: 1.5rem;
+        }
+
+        .news-title {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .news-excerpt {
+            color: var(--text-medium);
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .news-date {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* Career Section */
+        .career-list {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .career-item {
+            background: var(--bg-white);
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--accent);
+            box-shadow: 0 2px 8px var(--shadow);
+        }
+
+        .career-item h3 {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .career-link {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.75rem 1.5rem;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+
+        .career-link:hover {
+            background: var(--primary-light);
+        }
+
+        /* Benefits Section */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .benefit-card {
+            background: var(--bg-white);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px var(--shadow);
+            text-align: center;
+        }
+
+        .benefit-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .benefit-card h3 {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        /* Calendar Section */
+        .calendar-grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .calendar-section {
+            background: var(--bg-white);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px var(--shadow);
+        }
+
+        .calendar-section h3 {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .event-item {
+            padding: 1rem;
+            border-left: 3px solid var(--accent);
+            margin-bottom: 1rem;
+            background: var(--bg-warm);
+        }
+
+        .event-date {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        /* About Section */
+        .about-content {
+            background: var(--bg-white);
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px var(--shadow);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .about-content h3 {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            margin-top: 2rem;
+        }
+
+        .about-content h3:first-child {
+            margin-top: 0;
+        }
+
+        .about-content p {
+            margin-bottom: 1rem;
+            color: var(--text-medium);
+        }
+
+        .about-content ul {
+            margin: 1rem 0 1rem 2rem;
+            color: var(--text-medium);
+        }
+
+        .about-content ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .instagram-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1.5rem;
+            background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-top: 1.5rem;
+        }
+
+        .instagram-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(188, 24, 136, 0.4);
+        }
+
+        .instagram-button::before {
+            content: "📷";
+            font-size: 1.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: white;
+            padding: 3rem 0 1.5rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .footer-section p {
+            margin-bottom: 0.5rem;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        .footer-section a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .footer-section a:hover {
+            opacity: 0.8;
+        }
+
+        .social-links {
+            margin-top: 1rem;
+        }
+
+        .social-button {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-top: 0.5rem;
+        }
+
+        .social-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(188, 24, 136, 0.4);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 1.5rem;
+            text-align: center;
+        }
+
+        footer p {
+            opacity: 0.8;
+            margin-bottom: 0.5rem;
+        }
+
+        .disclaimer {
+            font-size: 0.9rem;
+            opacity: 0.6;
+            margin-top: 0.5rem;
+        }
+
+        /* Hidden sections */
+        .hidden {
+            display: none;
+        }
+
+        /* Individual News Page */
+        .news-detail {
+            background: var(--bg-white);
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px var(--shadow);
+            max-width: 900px;
+            margin: 2rem auto;
+        }
+
+        .news-detail img {
+            width: 100%;
+            max-height: 500px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+
+        .news-detail h1 {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            margin-bottom: 2rem;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+
+        .back-button:hover {
+            background: var(--primary-light);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .institutional-header .container {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            nav .container {
+                overflow-x: auto;
+                gap: 1rem;
+            }
+
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Institucional -->
+    <div class="institutional-header">
+        <div class="container">
+            <div class="logo" onclick="showSection('home')">
+                <img src="logo-efl-header.png" alt="EFL - El Futuro Llegó">
+            </div>
+            <div class="efemeride-alert">
+                🕯️ Próxima efeméride: 24 de marzo – Día de la Memoria por la Verdad y la Justicia
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Menu -->
+    <nav>
+        <div class="container">
+            <div class="nav-item active" onclick="showSection('home')">Inicio</div>
+            <div class="nav-item" onclick="showSection('noticias')">Noticias</div>
+            <div class="nav-item" onclick="showSection('carreras')">Carreras</div>
+            <div class="nav-item" onclick="showSection('beneficios')">Beneficios</div>
+            <div class="nav-item" onclick="showSection('agenda')">Agenda</div>
+            <div class="nav-item" onclick="showSection('nosotros')">Nosotros</div>
+        </div>
+    </nav>
+
+    <!-- HOME SECTION -->
+    <div id="home-section" class="page-section">
+        <div class="hero">
+            <img src="logo-efl.png" alt="EL FUTURO LLEGÓ" class="hero-logo">
+            <p>En la EPI nos ayudamos entre todxs. De estudiantes para estudiantes</p>
+        </div>
+
+        <div class="container section">
+            <h2 class="section-title">Últimas Noticias</h2>
+            <div class="news-grid">
+                <!-- 
+                ═══════════════════════════════════════════════════════════════════
+                📌 INSTRUCCIONES PARA ACTUALIZAR EL HOME (Solo 3 últimas noticias):
+                ═══════════════════════════════════════════════════════════════════
+                
+                1. Abrí el Google Sheet "EFL - Noticias"
+                2. Click en el menú: "🚀 EFL - Generar Código" → "✨ Generar código HTML"
+                3. Andá a la pestaña "CÓDIGO GENERADO"
+                4. Copiá el contenido de la CELDA A4 (📌 CÓDIGO PARA EL HOME)
+                5. Pegalo ACÁ ABAJO (reemplazando las 3 noticias viejas)
+                
+                ═══════════════════════════════════════════════════════════════════
+                -->
+                
+                <div class="news-card" onclick="showNews(1)">
+                    <img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=400&h=200&fit=crop" alt="Noticia 1" class="news-image">
+                    <div class="news-content">
+                        <h3 class="news-title">Inicio del Ciclo Lectivo 2026</h3>
+                        <p class="news-excerpt">Comenzamos un nuevo año académico con propuestas renovadas y actividades especiales para toda la comunidad estudiantil del ISEF 11.</p>
+                        <p class="news-date">12/03/2026</p>
+                    </div>
+                </div>
+
+                <div class="news-card" onclick="showNews(2)">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&h=200&fit=crop" alt="Noticia 2" class="news-image">
+                    <div class="news-content">
+                        <h3 class="news-title">Taller de Nutrición Deportiva</h3>
+                        <p class="news-excerpt">Se dictará un taller abierto sobre alimentación en el deporte de alto rendimiento. Inscripciones abiertas para estudiantes de todas las carreras.</p>
+                        <p class="news-date">08/03/2026</p>
+                    </div>
+                </div>
+
+                <div class="news-card" onclick="showNews(3)">
+                    <img src="https://images.unsplash.com/photo-1589487391730-58f20eb2c308?w=400&h=200&fit=crop" alt="Noticia 3" class="news-image">
+                    <div class="news-content">
+                        <h3 class="news-title">Nuevas Becas Progresar 2026</h3>
+                        <p class="news-excerpt">El Ministerio de Educación anunció la convocatoria para las becas Progresar. Conocé los requisitos y plazos de inscripción.</p>
+                        <p class="news-date">05/03/2026</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- NOTICIAS SECTION (Archivo completo) -->
+    <div id="noticias-section" class="page-section hidden">
+        <div class="container section">
+            <h2 class="section-title">Todas las Noticias</h2>
+            <p style="text-align: center; margin-bottom: 2rem; color: var(--text-medium);">
+                Archivo completo de noticias de EFL. Encontrá toda la información publicada desde el inicio del proyecto.
+            </p>
+            
+            <div class="news-grid">
+                <!-- 
+                ═══════════════════════════════════════════════════════════════════
+                📚 INSTRUCCIONES PARA ACTUALIZAR ESTA SECCIÓN:
+                ═══════════════════════════════════════════════════════════════════
+                
+                1. Abrí el Google Sheet "EFL - Noticias"
+                2. Click en el menú: "🚀 EFL - Generar Código" → "✨ Generar código HTML"
+                3. Andá a la pestaña "CÓDIGO GENERADO"
+                4. Copiá el contenido de la CELDA A9 (📚 CÓDIGO PARA ARCHIVO DE NOTICIAS)
+                5. Pegalo ACÁ ABAJO (reemplazando las noticias viejas)
+                
+                ═══════════════════════════════════════════════════════════════════
+                -->
+                
+                <div class="news-card" onclick="showNews(1)">
+                    <img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=400&h=200&fit=crop" alt="Noticia 1" class="news-image">
+                    <div class="news-content">
+                        <h3 class="news-title">Inicio del Ciclo Lectivo 2026</h3>
+                        <p class="news-excerpt">Comenzamos un nuevo año académico con propuestas renovadas y actividades especiales para toda la comunidad estudiantil del ISEF 11.</p>
+                        <p class="news-date">12/03/2026</p>
+                    </div>
+                </div>
+
+                <div class="news-card" onclick="showNews(2)">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&h=200&fit=crop" alt="Noticia 2" class="news-image">
+                    <div class="news-content">
+                        <h3 class="news-title">Taller de Nutrición Deportiva</h3>
+                        <p class="news-excerpt">Se dictará un taller abierto sobre alimentación en el deporte de alto rendimiento. Inscripciones abiertas para estudiantes de todas las carreras.</p>
+                        <p class="news-date">08/03/2026</p>
+                    </div>
+                </div>
+
+                <div class="news-card" onclick="showNews(3)">
+                    <img src="https://images.unsplash.com/photo-1589487391730-58f20eb2c308?w=400&h=200&fit=crop" alt="Noticia 3" class="news-image">
+                    <div class="news-content">
+                        <h3 class="news-title">Nuevas Becas Progresar 2026</h3>
+                        <p class="news-excerpt">El Ministerio de Educación anunció la convocatoria para las becas Progresar. Conocé los requisitos y plazos de inscripción.</p>
+                        <p class="news-date">05/03/2026</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CARRERAS SECTION -->
+    <div id="carreras-section" class="page-section hidden">
+        <div class="container section">
+            <h2 class="section-title">Nuestras Carreras</h2>
+            
+            <div class="career-list">
+                <div class="career-item">
+                    <h3>📰 Periodismo Deportivo</h3>
+                    <p><strong>Tecnicatura Superior de 3 años</strong> que combina la pasión por el deporte con las herramientas del periodismo moderno. Formación integral en narración, análisis y comunicación de eventos deportivos.</p>
+                    <p><strong>Modalidad:</strong> Presencial, lunes a viernes desde las 18:30 hs. Incluye prácticas y actividades en otros horarios.</p>
+                    <p><strong>Perfil humano:</strong> Personas curiosas, comunicativas y apasionadas por el deporte que buscan contar historias que inspiren y transmitan la esencia de la competencia.</p>
+                    <a href="https://www.isef11.edu.ar/?page_id=1759" target="_blank" class="career-link">Información oficial e inscripción → ISEF 11</a>
+                </div>
+
+                <div class="career-item">
+                    <h3>🏊 Guardavidas</h3>
+                    <p><strong>Curso de 1 año con cupos limitados (55 vacantes)</strong> para formación integral en prevención de accidentes acuáticos y asistencia en emergencias. Ingreso por orden de mérito según examen físico.</p>
+                    <p><strong>Requisitos:</strong> 18 años al 30 de junio, título secundario, aprobar examen de nado (600m en 14 min + 25m subacuático).</p>
+                    <p><strong>Perfil humano:</strong> Personas con vocación de servicio, excelente condición física, capacidad de reacción rápida y compromiso con la seguridad de otros.</p>
+                    <a href="https://www.isef11.edu.ar/?page_id=1817" target="_blank" class="career-link">Información oficial e inscripción → ISEF 11</a>
+                </div>
+
+                <div class="career-item">
+                    <h3>⚽ Director Técnico de Fútbol</h3>
+                    <p><strong>Curso de 2 años</strong> con formación táctica, estratégica y humana para liderar equipos deportivos. Desarrollo de capacidades de conducción y gestión de grupos en el ámbito competitivo.</p>
+                    <p><strong>Modalidad:</strong> Lunes y martes desde 18:30 hs. Incluye jornadas de introducción obligatorias y actividades en otros horarios.</p>
+                    <p><strong>Perfil humano:</strong> Líderes naturales con visión estratégica, capacidad de motivación y pasión por la formación y dirección de equipos.</p>
+                    <a href="https://www.isef11.edu.ar/?page_id=1788" target="_blank" class="career-link">Información oficial e inscripción → ISEF 11</a>
+                </div>
+
+                <div class="career-item">
+                    <h3>👶 Instructor de Fútbol Infantil</h3>
+                    <p><strong>Curso de 1 año con cupos limitados</strong> especializado en enseñanza y formación de niños y niñas en el deporte. Combina pedagogía, psicología infantil y técnica deportiva.</p>
+                    <p><strong>Modalidad:</strong> Lunes y martes de 18:30 a 22:30 hs, con actividades curriculares obligatorias en otros horarios y fines de semana.</p>
+                    <p><strong>Perfil humano:</strong> Personas pacientes, creativas y con vocación pedagógica que aman trabajar con la infancia y su desarrollo integral.</p>
+                    <a href="https://www.isef11.edu.ar/?page_id=1780" target="_blank" class="career-link">Información oficial e inscripción → ISEF 11</a>
+                </div>
+
+                <div class="career-item">
+                    <h3>🥗 Nutrición y Actividad Física</h3>
+                    <p><strong>Curso de 1 año en modalidad virtual</strong> con formación en alimentación aplicada al rendimiento deportivo. Aprenderás a integrar nutrición, psicología y actividad física para mejorar salud y rendimiento.</p>
+                    <p><strong>Modalidad:</strong> Virtual, lunes y martes de 19 a 22 hs por Meet. Asistencia obligatoria del 80%. Evaluación continua con trabajos prácticos y exámenes integradores.</p>
+                    <p><strong>Perfil humano:</strong> Personas analíticas, interesadas en la ciencia de la nutrición y comprometidas con la salud y el bienestar integral de deportistas.</p>
+                    <a href="https://www.isef11.edu.ar/?page_id=1917" target="_blank" class="career-link">Información oficial e inscripción → ISEF 11</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- BENEFICIOS SECTION -->
+    <div id="beneficios-section" class="page-section hidden">
+        <div class="container section">
+            <h2 class="section-title">Beneficios para Estudiantes</h2>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">🚌</div>
+                    <h3>Boleto Educativo Gratuito (BEG)</h3>
+                    <p>Programa del Gobierno de Santa Fe que garantiza el acceso gratuito al transporte público urbano e interurbano para estudiantes de nivel superior regulares.</p>
+                    <p><strong>Alcance:</strong> Válido en toda la provincia de Santa Fe para estudiantes regulares con constancia de alumno.</p>
+                    <p><strong>Requisitos:</strong> Ser alumno regular, presentar DNI y constancia de estudios actualizada. Gestión 100% online.</p>
+                    <a href="https://www.santafe.gob.ar/boletoeducativo/" target="_blank" class="career-link">Solicitar Boleto Educativo</a>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">🎓</div>
+                    <h3>Becas Progresar</h3>
+                    <p>Apoyo económico mensual de ANSES destinado a jóvenes de 16 a 24 años (sin límite en Enfermería) para garantizar la continuidad de estudios superiores.</p>
+                    <p><strong>Monto 2026:</strong> $35.000 mensuales (80% mensual + 20% retenido hasta acreditar regularidad). Pago anual en 12 cuotas.</p>
+                    <p><strong>Requisitos principales:</strong> Alumno regular, ingresos familiares menores a 3 SMVM, secundario completo, entre 17-24 años (extensiones según línea).</p>
+                    <p><strong>Inscripción 2026:</strong> Se estima entre marzo y abril. Gestión online a través de ANSES.</p>
+                    <a href="https://www.anses.gob.ar/educacion/progresar" target="_blank" class="career-link">Más información oficial</a>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">🤝</div>
+                    <h3>Cooperadora ISEF 11</h3>
+                    <p>Asociación que trabaja para mejorar la infraestructura, equipamiento e insumos del instituto mediante aportes voluntarios de la comunidad educativa.</p>
+                    <p><strong>Costo anual 2026:</strong> $64.000 con múltiples opciones de pago (efectivo, débito, crédito en 3 cuotas, 2 cuotas, transferencia).</p>
+                    <p><strong>Beneficios:</strong> Contribuís al mejoramiento edilicio, adquisición de material deportivo, biblioteca ampliada y recursos educativos para toda la comunidad.</p>
+                    <p style="margin-top: 1rem; font-style: italic; color: var(--text-light);">La educación pública se construye entre todos. Ser parte de la Cooperadora es apostar al crecimiento colectivo.</p>
+                    <a href="https://www.isef11.edu.ar/?page_id=594" target="_blank" class="career-link">Más información</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- AGENDA SECTION -->
+    <div id="agenda-section" class="page-section hidden">
+        <div class="container section">
+            <h2 class="section-title">Agenda Institucional</h2>
+            
+            <div class="calendar-grid">
+                <div class="calendar-section">
+                    <h3>📅 Calendario Académico 2026</h3>
+                    
+                    <div class="event-item">
+                        <p class="event-date">12 de marzo</p>
+                        <p>Inicio del ciclo lectivo</p>
+                    </div>
+
+                    <div class="event-item">
+                        <p class="event-date">15-19 de abril</p>
+                        <p>Receso de Semana Santa</p>
+                    </div>
+
+                    <div class="event-item">
+                        <p class="event-date">25 de mayo</p>
+                        <p>Feriado Nacional - Día de la Revolución de Mayo</p>
+                    </div>
+
+                    <div class="event-item">
+                        <p class="event-date">20 de junio</p>
+                        <p>Feriado Nacional - Día de la Bandera</p>
+                    </div>
+
+                    <div class="event-item">
+                        <p class="event-date">1-12 de julio</p>
+                        <p>Receso de invierno</p>
+                    </div>
+
+                    <div class="event-item">
+                        <p class="event-date">1-15 de diciembre</p>
+                        <p>Período de exámenes finales</p>
+                    </div>
+                </div>
+
+                <div class="calendar-section">
+                    <h3>🕯️ Calendario de Efemérides</h3>
+                    
+                    <div class="event-item">
+                        <p class="event-date">24 de marzo</p>
+                        <p>Día Nacional de la Memoria por la Verdad y la Justicia</p>
+                    </div>
+
+                    <div class="event-item">
+                        <p class="event-date">2 de abril</p>
+                        <p>Día del Veterano y de los Caídos en la Guerra de Malvinas</p>
+                    </div>
+
+                    <div class="event-item">
+                        <p class="event-date">1° de mayo</p>
+                        <p>Día Internacional del Trabajador</p>
+                    </div>
+
+                    <div class="event-item">
+                        <p class="event-date">25 de mayo</p>
+                        <p>Día de la Revolución de Mayo</p>
+                    </div>
+
+                    <div class="event-item">
+                        <p class="event-date">20 de junio</p>
+                        <p>Día de la Bandera</p>
+                    </div>
+
+                    <div class="event-item">
+                        <p class="event-date">9 de julio</p>
+                        <p>Día de la Independencia</p>
+                    </div>
+
+                    <div class="event-item">
+                        <p class="event-date">12 de octubre</p>
+                        <p>Día del Respeto a la Diversidad Cultural</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- NOSOTROS SECTION -->
+    <div id="nosotros-section" class="page-section hidden">
+        <div class="container section">
+            <h2 class="section-title">Sobre Nosotros</h2>
+            
+            <div class="about-content">
+                <h3>¿Qué es EFL?</h3>
+                <p>EFL – El Futuro Llegó es un portal informativo construido por estudiantes del ISEF N°11 que decidieron dejar de esperar y empezar a comunicar. No venimos a repetir lo que ya está dicho: venimos a contar lo que pasa, lo que falta y lo que importa.</p>
+
+                <h3>¿Por qué existe?</h3>
+                <p>Porque la información no siempre llega. Porque muchas veces circula tarde, mal o fragmentada. Porque estudiar también es organizarse, preguntar, incomodar y compartir.</p>
+                <p>EFL nace para centralizar noticias, visibilizar problemáticas, difundir beneficios, ordenar calendarios y poner en valor las carreras de la Escuela de Perfeccionamiento e Investigación (EPI), pero sobre todo para fortalecer una comunidad que piensa, debate y se hace cargo de su formación.</p>
+
+                <h3>Lo que creemos</h3>
+                <ul>
+                    <li>La información es un derecho, no un favor.</li>
+                    <li>La formación no es solo técnica, también es crítica.</li>
+                    <li>La comunidad estudiantil existe, aunque a veces no la escuchen.</li>
+                    <li>Comunicar también es tomar posición.</li>
+                </ul>
+                <p>No buscamos likes: buscamos claridad, memoria y compromiso.</p>
+
+                <h3>Sobre la representación estudiantil</h3>
+                <p>Este portal también nace a partir de una ausencia.</p>
+                <p>La Escuela de Perfeccionamiento e Investigación no cuenta hoy con un espacio de representación que visibilice, acompañe y se haga cargo de sus problemáticas específicas dentro del Instituto. Ante esa falta de acción, organización y presencia, decidimos crear este espacio.</p>
+                <p>EFL no reemplaza a ningún Centro de Estudiantes. Pero sí asume una responsabilidad: informar, exponer y poner en agenda aquello que no está siendo atendido.</p>
+                <p><strong>Cuando la representación no alcanza, la comunicación se vuelve herramienta.</strong></p>
+
+                <h3>Quiénes somos</h3>
+                <p>Somos estudiantes de la Escuela de Perfeccionamiento e Investigación (EPI). Aprendemos comunicando, practicamos informando y construimos desde adentro. Este espacio es parte de nuestra formación, pero también de nuestro compromiso con la comunidad.</p>
+
+                <h3>Aclaración necesaria</h3>
+                <p>EFL es un portal informativo gestionado por estudiantes. <strong>No es un sitio oficial del ISEF N°11.</strong> Para información administrativa, normativa o académica oficial, los canales institucionales siguen siendo la referencia obligatoria.</p>
+                <p><strong>Nosotros informamos. La institución certifica. La comunidad decide qué hacer con eso.</strong></p>
+
+                <h3>Contacto</h3>
+                <p style="text-align: center;">
+                    <a href="https://www.instagram.com/elfuturoepi/" target="_blank" class="instagram-button">
+                        Seguinos en Instagram
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- NEWS DETAIL SECTION (Template) -->
+    <div id="news-detail-section" class="page-section hidden">
+        <div class="container">
+            <a href="#" class="back-button" onclick="showSection('home'); return false;">← Volver a Noticias</a>
+            <div class="news-detail" id="news-detail-content">
+                <!-- Content will be inserted by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>EFL - El Futuro Llegó</h3>
+                    <p>Portal informativo de estudiantes para estudiantes</p>
+                    <p>Escuela de Perfeccionamiento e Investigación (EPI)</p>
+                    <p>ISEF N°11 - Rosario, Santa Fe</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <p>📧 Email: <a href="/cdn-cgi/l/email-protection#0b6e6d672562786e6d3a3a4b6c666a626725686466"><span class="__cf_email__" data-cfemail="3653505a185f455350070776515b575f5a1855595b">[email&#160;protected]</span></a></p>
+                    <p>📱 Seguinos en redes:</p>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/elfuturoepi/" target="_blank" class="social-button instagram">
+                            📷 Instagram @elfuturoepi
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Sumate a EFL</h3>
+                    <p>¿Querés formar parte del equipo?</p>
+                    <p>¿Tenés una noticia para compartir?</p>
+                    <p>Escribinos a nuestro mail o Instagram</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p class="disclaimer">EFL es un portal informativo gestionado por estudiantes. No es un sitio oficial del ISEF N°11.</p>
+                <p class="disclaimer">Para información administrativa, normativa o académica oficial, consultá los canales institucionales del instituto.</p>
+                <p style="margin-top: 1rem; opacity: 0.6;">© 2026 EFL - El Futuro Llegó</p>
+            </div>
+        </div>
+    </footer>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        /* 
+        ═══════════════════════════════════════════════════════════════════
+        💾 INSTRUCCIONES PARA ACTUALIZAR LAS NOTICIAS (JavaScript):
+        ═══════════════════════════════════════════════════════════════════
+        
+        1. Abrí el Google Sheet "EFL - Noticias"
+        2. Click en el menú: "🚀 EFL - Generar Código" → "✨ Generar código HTML"
+        3. Andá a la pestaña "CÓDIGO GENERADO"
+        4. Copiá el contenido de la CELDA A14 (💾 CÓDIGO JAVASCRIPT)
+        5. Pegalo ACÁ ABAJO (reemplazando el contenido entre { y })
+        
+        IMPORTANTE: NO borres "const newsData = {" ni el "}" final
+        Solo reemplazá lo que está ENTRE esas llaves
+        
+        ═══════════════════════════════════════════════════════════════════
+        */
+        
+        // News data
+        const newsData = {
+            1: {
+                title: "Inicio del Ciclo Lectivo 2026",
+                date: "12/03/2026",
+                image: "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=800&h=500&fit=crop",
+                content: `
+                    <p>Con una ceremonia de apertura en el patio central, el ISEF N°11 dio inicio oficial al ciclo lectivo 2026. Autoridades, docentes y estudiantes compartieron un momento de bienvenida marcado por la expectativa y el entusiasmo.</p>
+                    
+                    <p>La directora del instituto, Prof. María Eugenia Rodríguez, destacó en su discurso: "Este año nos propone desafíos renovados, pero también oportunidades únicas para crecer como comunidad educativa. Los invitamos a protagonizar su formación con compromiso y pasión".</p>
+                    
+                    <h3>Actividades de bienvenida</h3>
+                    <p>Durante la primera semana, se realizarán actividades especiales de integración para estudiantes ingresantes, incluyendo recorridos por las instalaciones, talleres introductorios y encuentros con docentes de cada carrera.</p>
+                    
+                    <h3>Novedades 2026</h3>
+                    <p>Este año el instituto incorpora nuevos recursos deportivos, una biblioteca ampliada con material digital y espacios de estudio renovados. Además, se fortalecen los convenios con clubes e instituciones para prácticas profesionales.</p>
+                    
+                    <p>Les deseamos a toda la comunidad estudiantil un excelente año académico lleno de aprendizajes y logros compartidos.</p>
+                `
+            },
+            2: {
+                title: "Taller de Nutrición Deportiva",
+                date: "08/03/2026",
+                image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=500&fit=crop",
+                content: `
+                    <p>El próximo 15 de marzo se llevará a cabo un taller abierto sobre "Alimentación en el Deporte de Alto Rendimiento", dictado por la Lic. Carolina Méndez, nutricionista deportiva con amplia trayectoria en selecciones nacionales.</p>
+                    
+                    <h3>¿Qué se va a tratar?</h3>
+                    <p>El taller abordará temas fundamentales como planificación nutricional según disciplina deportiva, hidratación antes, durante y después del ejercicio, suplementación deportiva basada en evidencia y estrategias de alimentación para competencias.</p>
+                    
+                    <h3>¿A quién está dirigido?</h3>
+                    <p>La actividad está abierta a estudiantes de todas las carreras del ISEF 11, con especial énfasis en quienes cursan las especializaciones de Nutrición Deportiva y Director Técnico.</p>
+                    
+                    <h3>Inscripciones</h3>
+                    <p>Las inscripciones se realizan a través de secretaría académica o enviando un mail a talleres@isef11.edu.ar. Los cupos son limitados y se asignan por orden de llegada.</p>
+                    
+                    <p><strong>Fecha:</strong> Viernes 15/03/2026<br>
+                    <strong>Horario:</strong> 14:00 a 17:00 hs<br>
+                    <strong>Lugar:</strong> Auditorio principal - ISEF 11</p>
+                `
+            },
+            3: {
+                title: "Nuevas Becas Progresar 2026",
+                date: "05/03/2026",
+                image: "https://images.unsplash.com/photo-1589487391730-58f20eb2c308?w=800&h=500&fit=crop",
+                content: `
+                    <p>El Ministerio de Educación de la Nación anunció oficialmente la apertura de la convocatoria 2026 del programa Becas Progresar, destinado a estudiantes de nivel superior de todo el país.</p>
+                    
+                    <h3>¿Qué son las Becas Progresar?</h3>
+                    <p>Es un programa de apoyo económico mensual que acompaña a estudiantes de bajos recursos en su trayectoria educativa. El monto se actualiza anualmente y se deposita en cuenta bancaria o mediante tarjeta de débito.</p>
+                    
+                    <h3>Requisitos principales</h3>
+                    <ul>
+                        <li>Ser ciudadano argentino o residente con DNI</li>
+                        <li>Tener entre 18 y 35 años</li>
+                        <li>Estar inscripto como alumno regular en una institución de nivel superior</li>
+                        <li>No superar el límite de ingresos familiares establecido</li>
+                        <li>Cumplir con requisitos académicos mínimos</li>
+                    </ul>
+                    
+                    <h3>Cronograma 2026</h3>
+                    <p><strong>Inscripciones:</strong> Del 1° al 31 de marzo<br>
+                    <strong>Evaluación de solicitudes:</strong> Abril - Mayo<br>
+                    <strong>Cobro del primer estipendio:</strong> Junio 2026</p>
+                    
+                    <h3>¿Cómo inscribirse?</h3>
+                    <p>La inscripción se realiza exclusivamente de forma online en el sitio oficial: <strong>www.argentina.gob.ar/educacion/progresar</strong></p>
+                    
+                    <p>Es fundamental completar todos los datos solicitados y cargar la documentación requerida de manera correcta para evitar rechazos.</p>
+                    
+                    <p><em>Desde EFL recomendamos a todos los estudiantes que cumplan los requisitos que se inscriban. Es una oportunidad valiosa de acompañamiento económico durante la carrera.</em></p>
+                `
+            }
+        };
+
+        // Navigation
+        function showSection(sectionName) {
+            // Hide all sections
+            document.querySelectorAll('.page-section').forEach(section => {
+                section.classList.add('hidden');
+            });
+
+            // Remove active class from all nav items
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('active');
+            });
+
+            // Show selected section
+            const sectionMap = {
+                'home': 'home-section',
+                'noticias': 'noticias-section',
+                'carreras': 'carreras-section',
+                'beneficios': 'beneficios-section',
+                'agenda': 'agenda-section',
+                'nosotros': 'nosotros-section'
+            };
+
+            const sectionId = sectionMap[sectionName];
+            if (sectionId) {
+                document.getElementById(sectionId).classList.remove('hidden');
+                
+                // Add active class to corresponding nav item
+                const navItems = document.querySelectorAll('.nav-item');
+                const navIndex = Object.keys(sectionMap).indexOf(sectionName);
+                if (navItems[navIndex]) {
+                    navItems[navIndex].classList.add('active');
+                }
+            }
+
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Show individual news
+        function showNews(newsId) {
+            const news = newsData[newsId];
+            if (!news) return;
+
+            const detailContent = document.getElementById('news-detail-content');
+            detailContent.innerHTML = `
+                <img src="${news.image}" alt="${news.title}">
+                <h1>${news.title}</h1>
+                <p class="news-date" style="margin-bottom: 2rem; color: var(--text-light);">${news.date}</p>
+                ${news.content}
+            `;
+
+            // Hide all sections and show news detail
+            document.querySelectorAll('.page-section').forEach(section => {
+                section.classList.add('hidden');
+            });
+            document.getElementById('news-detail-section').classList.remove('hidden');
+
+            // Remove active from nav
+            document.querySelectorAll('.nav-item').forEach(item => {
+  

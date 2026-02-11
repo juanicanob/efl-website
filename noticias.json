@@ -2,30 +2,14 @@
   "noticias": [
     {
       "id": 1,
-      "titulo": "Inicio del Ciclo Lectivo 2026",
-      "resumen": "Comenzamos un nuevo año académico con propuestas renovadas y actividades especiales para toda la comunidad estudiantil del ISEF 11.",
-      "contenido": "<p>El ISEF 11 da inicio al ciclo lectivo 2026 con una renovada energía y propuestas innovadoras para toda la comunidad educativa.</p><p>Este año se caracteriza por la incorporación de nuevas metodologías de enseñanza y espacios de participación estudiantil ampliados.</p><p>Las clases inician el 12 de marzo con actividades de bienvenida para estudiantes de todas las carreras.</p>",
-      "fecha": "12/03/2026",
-      "imagen": "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=400&h=200&fit=crop",
-      "autor": "Equipo EFL"
-    },
-    {
-      "id": 2,
-      "titulo": "Taller de Nutrición Deportiva",
-      "resumen": "Se dictará un taller abierto sobre alimentación en el deporte de alto rendimiento. Inscripciones abiertas para estudiantes de todas las carreras.",
-      "contenido": "<p>El Departamento de Perfeccionamiento e Investigación (EPI) invita a un taller gratuito sobre Nutrición Deportiva aplicada al alto rendimiento.</p><p>El taller se desarrollará los días 15 y 16 de marzo en el Aula Magna, de 14 a 18 hs.</p><p>Inscripciones abiertas hasta el 13 de marzo en Secretaría.</p>",
-      "fecha": "08/03/2026",
-      "imagen": "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&h=200&fit=crop",
-      "autor": "EPI - ISEF 11"
-    },
-    {
-      "id": 3,
-      "titulo": "Nuevas Becas Progresar 2026",
-      "resumen": "El Ministerio de Educación anunció la convocatoria para las becas Progresar. Conocé los requisitos y plazos de inscripción.",
-      "contenido": "<p>Ya está abierta la inscripción para las Becas Progresar 2026, un programa nacional que brinda apoyo económico a estudiantes de nivel superior.</p><p><strong>Monto:</strong> $35,000 mensuales (80% directo + 20% retenido)</p><p><strong>Requisitos:</strong> Tener entre 16 y 24 años, ingreso familiar menor a 3 SMVM, y ser alumno regular.</p><p><strong>Inscripción:</strong> Se estima que abrirá entre marzo y abril 2026 en becasprogresar.educacion.gob.ar</p>",
-      "fecha": "05/03/2026",
-      "imagen": "https://images.unsplash.com/photo-1589487391730-58f20eb2c308?w=400&h=200&fit=crop",
-      "autor": "Ministerio de Educación"
+      "titulo": "juaninacio403@gmail.com",
+      "resumen": "Prueba sistema EFL",
+      "contenido": "<p>Esta es una noticia de prueba para verificar que todo funcione correctamente</p>",
+      "fecha": "Este es el contenido completo de la noticia de prueba. Ac? pod?s escribir varios p?rrafos. Este es el segundo p?rrafo de ejemplo.",
+      "imagen": "10/02/2026",
+      "autor": "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=400"
     }
-  ]
+  ],
+  "ultimaActualizacion": "2026-02-11T13:06:11.041Z",
+  "total": 1
 }
